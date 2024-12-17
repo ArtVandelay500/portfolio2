@@ -1,0 +1,46 @@
+:root {
+  /* Dark theme colors */
+  --dark-bg: #000000;
+  --dark-text: #ffffff;
+  --dark-secondary: #cccccc;
+
+  /* Light theme colors */
+  --light-bg: #ffffff;
+  --light-text: #000000;
+  --light-secondary: #333333;
+}
+
+.app-container {
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.app-container.dark {
+  color: var(--dark-text);
+}
+
+.app-container.light {
+  color: var(--light-text);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: none;
+  border: 1px solid currentColor;
+  color: inherit;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}

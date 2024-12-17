@@ -1,0 +1,20 @@
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.nav-list li {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.nav-list li:hover {
+  opacity: 0.7;
+}
+
+.nav-list li.active {
+  opacity: 1;
+  font-weight: 500;
+}

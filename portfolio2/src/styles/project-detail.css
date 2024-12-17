@@ -1,0 +1,53 @@
+/* src/styles/project-detail.css */
+.project-detail {
+  padding: 40px;
+  color: white;
+}
+
+.project-detail h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.project-detail .overview {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+.project-detail section {
+  margin-bottom: 50px;
+}
+
+.project-detail h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-detail .content {
+  white-space: pre-line;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.project-detail .feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-detail .feature-list li {
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+  color: #ccc;
+}
+
+.project-detail .feature-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: white;
+}
