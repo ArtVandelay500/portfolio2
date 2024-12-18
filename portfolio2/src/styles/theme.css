@@ -1,46 +1,74 @@
 :root {
   /* Dark theme colors */
-  --dark-bg: #000000;
-  --dark-text: #ffffff;
+  --dark-bg: #000000e3;
+  --dark-text: #dfdfdf;
   --dark-secondary: #cccccc;
+  --toggle-track-dark: rgba(255, 255, 255, 0.25);
 
   /* Light theme colors */
-  --light-bg: #ffffff;
-  --light-text: #000000;
+  --light-bg: #0000002c;
+  --light-text: #000000d5;
   --light-secondary: #333333;
+  --toggle-track-light: rgba(0, 0, 0, 0.2);
 }
 
 .app-container {
-  transition: color 0.5s ease, background-color 0.5s ease;
+  transition: color 0.5s ease, background-color 1s ease-in-out;
 }
 
 .app-container.dark {
+  background-color: var(--dark-bg);
   color: var(--dark-text);
 }
 
 .app-container.light {
+  background-color: var(--light-bg);
   color: var(--light-text);
 }
 
+/* Add to your CSS */
 .theme-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 1.5px;
+  left: 2%;
   z-index: 1000;
+  width: 50px;
+  height: 26px;
+  padding: 0;
+  border: none;
   background: none;
-  border: 1px solid currentColor;
-  color: inherit;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
 }
 
-.theme-toggle:hover {
-  transform: scale(1.1);
+.toggle-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--toggle-track-dark);
+  border-radius: 13px;
+  transition: all 0.3s ease;
+}
+
+.toggle-track.dark {
+  background: var(--toggle-track-dark);
+}
+.toggle-track.light {
+  background: var(--toggle-track-light);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Light mode styles */
+
+.theme-toggle[data-light-mode="true"] .toggle-thumb {
+  transform: translateX(24px);
 }

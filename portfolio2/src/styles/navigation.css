@@ -4,17 +4,52 @@
   gap: 20px;
   padding: 20px;
 }
-
-.nav-list li {
+.section-list li {
+  display: flex;
+  justify-content: flex-start;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: letter-spacing 0.7s ease, opacity 0.5s ease;
+  letter-spacing: -0.5px;
 }
-
+.nav-list li {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: letter-spacing 0.7s ease, opacity 0.5s ease;
+  letter-spacing: -0.5px;
+}
+.section-list li:hover,
 .nav-list li:hover {
   opacity: 0.7;
+  letter-spacing: 0.5px;
 }
 
+.section-list li.active,
 .nav-list li.active {
-  opacity: 1;
-  font-weight: 500;
+  opacity: 0.5;
+  letter-spacing: 0;
+}
+.back-button.dark {
+  font-family: kuta;
+  border: 1px solid white;
+  color: white;
+}
+.back-button.light {
+  font-family: Kuta;
+  border: 1px solid black;
+  color: black;
+}
+
+.back-button {
+  background: none;
+  font-family: kuta;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+}
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }

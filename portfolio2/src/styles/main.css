@@ -33,20 +33,6 @@
   padding: 20px;
 }
 
-.back-button {
-  background: none;
-  border: 1px solid white;
-  color: white;
-  padding: 8px 16px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
 .section-list {
   display: flex;
   flex-direction: column;
@@ -94,11 +80,11 @@
   left: 0;
 }
 /* Add transitions to all text elements */
-h1,
+/* h1,
 h2,
 h3,
 p,
 li,
 span {
   transition: color 0.5s ease;
-}
+} */

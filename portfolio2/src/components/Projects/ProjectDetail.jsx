@@ -134,6 +134,8 @@ const ProjectDetail = ({ project, activeSection }) => {
       prioritize important features and fixes.`,
     },
   };
+  // Use the passed project prop instead of sampleProject
+  if (!project) return null;
 
   return (
     <div className="project-detail">
@@ -141,7 +143,16 @@ const ProjectDetail = ({ project, activeSection }) => {
       <p className="overview">{sampleProject.overview}</p>
 
       {Object.entries(sampleProject.sections).map(([section, content]) => (
-        <section key={section} className={`section ${section}`}>
+        <section
+          key={section}
+          ref={(el) => {
+            // Store the ref when the element is mounted
+            if (el) {
+              sectionRefs.current[section] = el;
+            }
+          }}
+          className={`section ${section}`}
+        >
           <h2>{section.replace("_", " ").toUpperCase()}</h2>
           {Array.isArray(content) ? (
             <ul className="feature-list">

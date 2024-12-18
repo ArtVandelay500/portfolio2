@@ -5,23 +5,31 @@ const ProjectIndex = ({ project, onBack, onSectionSelect, activeSection }) => {
     return null;
   }
 
+  // Use the same section names and order as ProjectDetail
+  const sections = Object.keys(project.sections);
+
   return (
     <div className="project-index">
-      <button className="back-button" onClick={onBack}>
+      <button
+        className="back-button"
+        onClick={onBack} // This will trigger the handleBack function from LeftPanel
+      >
         Back to Projects
       </button>
       <h2>{project.title}</h2>
       <ul className="section-list">
-        {Object.keys(project.sections).map((section) => (
+        {sections.map((section) => (
           <li
             key={section}
             className={`section-item ${
               activeSection === section ? "active" : ""
             }`}
-            onClick={() => onSectionSelect(section)}
+            onClick={() => {
+              console.log("Section clicked:", section); // Debug log
+              onSectionSelect(section);
+            }}
           >
-            {section.replace("_", " ").charAt(0).toUpperCase() +
-              section.slice(1).replace("_", " ")}
+            {section.replace("_", " ").toUpperCase()}
           </li>
         ))}
       </ul>

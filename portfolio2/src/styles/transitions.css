@@ -1,23 +1,43 @@
 .fade-enter {
+  position: absolute;
   opacity: 0;
 }
 
 .fade-enter-active {
+  position: absolute;
   opacity: 1;
-  transition: opacity 300ms ease-in;
+  transition: opacity 1200ms ease-in;
 }
 
 .fade-exit {
+  position: absolute;
   opacity: 1;
 }
 
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 300ms ease-out;
+  position: absolute; /* Keep exiting content in place */
+  width: 100%;
+  transition: opacity 1200ms ease-out;
 }
 
 .page-transition {
   position: absolute;
   width: 100%;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.content-container {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
 }

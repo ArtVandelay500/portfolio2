@@ -1,27 +1,23 @@
 import React from "react";
-
 const NavList = ({ currentView, setCurrentView }) => {
+  const navItems = ["home", "projects", "contact"];
+
   return (
-    <ul className="nav-list">
-      <li
-        className={currentView === "home" ? "active" : ""}
-        onClick={() => setCurrentView("home")}
-      >
-        Home
-      </li>
-      <li
-        className={currentView === "projects" ? "active" : ""}
-        onClick={() => setCurrentView("projects")}
-      >
-        Projects
-      </li>
-      <li
-        className={currentView === "contact" ? "active" : ""}
-        onClick={() => setCurrentView("contact")}
-      >
-        Contact
-      </li>
-    </ul>
+    <>
+      <h1>hey</h1>
+      <ul className="nav-list">
+        {navItems.map((item) => (
+          <li
+            key={item}
+            className={currentView === item ? "active" : ""}
+            onClick={() => setCurrentView(item)}
+            data-text={item} // Add this attribute
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

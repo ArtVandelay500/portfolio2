@@ -11,40 +11,32 @@ const RightPanel = ({
   setSelectedProject,
   activeSection,
 }) => {
-  const renderContent = () => {
-    if (selectedProject) {
-      return (
-        <ProjectDetail
-          project={selectedProject}
-          activeSection={activeSection}
-        />
-      );
-    }
-
-    switch (currentView) {
-      case "home":
-        return <Home />;
-      case "projects":
-        return <ProjectList setSelectedProject={setSelectedProject} />;
-      case "contact":
-        return <Contact />;
-      default:
-        return <Home />;
-    }
-  };
-
   return (
     <div className="right-panel">
       <TransitionGroup>
         <CSSTransition
           key={selectedProject ? `project-${selectedProject.id}` : currentView}
-          timeout={300}
+          timeout={1200}
           classNames="fade"
-          mountOnEnter
-          unmountOnExit
         >
-          {/* Wrap rendered content in a div that will receive transition classes */}
-          <div className="page-transition">{renderContent()}</div>
+          <div className="page-transition">
+            {selectedProject ? (
+              <ProjectDetail
+                project={selectedProject}
+                activeSection={activeSection}
+              />
+            ) : (
+              <div className="content-container">
+                {currentView === "projects" ? (
+                  <ProjectList setSelectedProject={setSelectedProject} />
+                ) : currentView === "contact" ? (
+                  <Contact />
+                ) : (
+                  <Home />
+                )}
+              </div>
+            )}
+          </div>
         </CSSTransition>
       </TransitionGroup>
     </div>

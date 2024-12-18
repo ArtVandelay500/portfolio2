@@ -1,26 +1,25 @@
 import React from "react";
 
 const ProjectList = ({ setSelectedProject }) => {
+  // Use the same project data structure as ProjectDetail
   const projects = [
     {
       id: 1,
-      title: "Project One",
-      description: "Brief description of project one",
-      categories: ["React", "Node.js"],
+      title: "E-Commerce Platform Redesign",
+      overview: "",
       sections: {
-        title: "Detailed project information",
-        features: ["Feature 1", "Feature 2", "Feature 3"],
-        database: "MongoDB with Mongoose",
-        details: "Full project implementation details...",
+        challenges: `The existing platform faced multiple challenges...`,
+        features: [],
+        technical_stack: `Frontend:
+        • React.js for UI components
+        • Redux for state management...`,
+        implementation: `The implementation process followed a phased approach...`,
+        results: `The project achieved significant improvements...`,
+        lessons_learned: `Key takeaways from the project...`,
       },
     },
-    // ... other projects
+    // Add more projects as needed
   ];
-
-  const handleProjectClick = (project) => {
-    console.log("Project clicked:", project); // Debug log
-    setSelectedProject(project);
-  };
 
   return (
     <div className="project-list">
@@ -28,14 +27,17 @@ const ProjectList = ({ setSelectedProject }) => {
         <div
           key={project.id}
           className="project-card"
-          onClick={() => handleProjectClick(project)}
+          onClick={() => {
+            console.log("Project selected:", project); // Debug log
+            setSelectedProject(project);
+          }}
         >
           <h2>{project.title}</h2>
-          <p>{project.description}</p>
+          <p>{project.overview}</p>
           <div className="project-categories">
-            {project.categories.map((category, index) => (
+            {Object.keys(project.sections).map((category, index) => (
               <span key={index} className="category">
-                {category}
+                {category.replace("_", " ")}
               </span>
             ))}
           </div>

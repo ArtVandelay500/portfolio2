@@ -1,5 +1,7 @@
 /* src/styles/project-detail.css */
 .project-detail {
+  position: absolute;
+  overflow: hidden;
   padding: 40px;
   color: white;
 }
