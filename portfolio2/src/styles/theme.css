@@ -4,12 +4,19 @@
   --dark-text: #dfdfdf;
   --dark-secondary: #cccccc;
   --toggle-track-dark: rgba(255, 255, 255, 0.25);
+  --overlay-hover-dark: rgba(179, 255, 0, 0.1);
 
   /* Light theme colors */
   --light-bg: #0000002c;
   --light-text: #000000d5;
   --light-secondary: #333333;
   --toggle-track-light: rgba(0, 0, 0, 0.2);
+  --overlay-hover-light: rgba(
+    200,
+    255,
+    0,
+    0.075
+  ); /* Dark hover for light mode */
 }
 
 .app-container {
@@ -19,56 +26,25 @@
 .app-container.dark {
   background-color: var(--dark-bg);
   color: var(--dark-text);
+  --overlay-hover: var(--overlay-hover-dark);
 }
 
 .app-container.light {
   background-color: var(--light-bg);
   color: var(--light-text);
+  --overlay-hover: var(--overlay-hover-light);
 }
-
-/* Add to your CSS */
-.theme-toggle {
+.theme-toggle-overlay {
   position: fixed;
-  top: 1.5px;
-  left: 2%;
-  z-index: 1000;
-  width: 50px;
-  height: 26px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.toggle-track {
-  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: var(--toggle-track-dark);
-  border-radius: 13px;
-  transition: all 0.3s ease;
+  z-index: 0; /* Place it behind the content but above the WaveEffect */
+  background: transparent; /* Ensure it's invisible */
+  cursor: pointer; /* Show pointer to indicate it's clickable */
+  transition: all 0.3s linear;
 }
-
-.toggle-track.dark {
-  background: var(--toggle-track-dark);
-}
-.toggle-track.light {
-  background: var(--toggle-track-light);
-}
-
-.toggle-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-/* Light mode styles */
-
-.theme-toggle[data-light-mode="true"] .toggle-thumb {
-  transform: translateX(24px);
+.theme-toggle-overlay:hover {
+  background: var(--overlay-hover); /* Dynamic hover color based on theme */
 }

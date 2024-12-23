@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Home from "../Home";
 import Contact from "../Contact";
@@ -16,8 +16,13 @@ const RightPanel = ({
       <TransitionGroup>
         <CSSTransition
           key={selectedProject ? `project-${selectedProject.id}` : currentView}
-          timeout={1200}
+          timeout={600}
           classNames="fade"
+          onExited2={() => console.log("Component exited")}
+          onEntered2={() => console.log("Component entered")}
+          onExit={(node) => {
+            console.log("Starting exit", { selectedProject, currentView });
+          }}
         >
           <div className="page-transition">
             {selectedProject ? (
@@ -25,16 +30,12 @@ const RightPanel = ({
                 project={selectedProject}
                 activeSection={activeSection}
               />
+            ) : currentView === "projects" ? (
+              <ProjectList setSelectedProject={setSelectedProject} />
+            ) : currentView === "contact" ? (
+              <Contact />
             ) : (
-              <div className="content-container">
-                {currentView === "projects" ? (
-                  <ProjectList setSelectedProject={setSelectedProject} />
-                ) : currentView === "contact" ? (
-                  <Contact />
-                ) : (
-                  <Home />
-                )}
-              </div>
+              <Home />
             )}
           </div>
         </CSSTransition>

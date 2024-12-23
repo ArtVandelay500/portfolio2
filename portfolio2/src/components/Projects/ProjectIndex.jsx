@@ -1,6 +1,12 @@
 import React from "react";
 
-const ProjectIndex = ({ project, onBack, onSectionSelect, activeSection }) => {
+const ProjectIndex = ({
+  project,
+  onBack,
+  onSectionSelect,
+  activeSection,
+  isDarkMode,
+}) => {
   if (!project || !project.sections) {
     return null;
   }
@@ -11,7 +17,7 @@ const ProjectIndex = ({ project, onBack, onSectionSelect, activeSection }) => {
   return (
     <div className="project-index">
       <button
-        className="back-button"
+        className={`back-button ${isDarkMode ? "dark" : "light"}`}
         onClick={onBack} // This will trigger the handleBack function from LeftPanel
       >
         Back to Projects

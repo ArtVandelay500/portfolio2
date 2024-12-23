@@ -10,18 +10,16 @@ const LeftPanel = ({
   setSelectedProject,
   activeSection,
   setActiveSection,
+  isDarkMode,
 }) => {
   const handleBack = () => {
     // First set a temporary fake project to ensure the transition key changes
     setSelectedProject({ ...selectedProject, id: "transition-" + Date.now() });
 
-    // Then after a brief timeout, set it to null
-    setTimeout(() => {
-      setSelectedProject(null);
-      setActiveSection(null);
-    }, 10); // Very short timeout to ensure React catches both changes
-    console.log(`${selectedProject.id}`);
-    console.log(`Selected LeftPanel proejct is : ${selectedProject.id}`);
+    console.log("Back clicked, before state changes");
+    setSelectedProject(null);
+    setActiveSection(null);
+    console.log("Back clicked, after state changes");
   };
   return (
     <div className="left-panel">
@@ -38,6 +36,7 @@ const LeftPanel = ({
                 onBack={handleBack}
                 onSectionSelect={(section) => setActiveSection(section)}
                 activeSection={activeSection}
+                isDarkMode={isDarkMode}
               />
             ) : (
               <NavList

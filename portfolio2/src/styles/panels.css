@@ -5,10 +5,14 @@
   position: relative;
   height: 100%;
   overflow: hidden;
+  align-items: center;
+  justify-content: flex-start;
 }
 .right-panel {
+  overflow-y: auto;
 }
 
-.right-panel::-webkit-scrollbar {
+.right-panel::-webkit-scrollbar,
+.left-panel::-webkit-scrollbar {
   display: none;
 }

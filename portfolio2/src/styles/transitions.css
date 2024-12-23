@@ -6,7 +6,7 @@
 .fade-enter-active {
   position: absolute;
   opacity: 1;
-  transition: opacity 1200ms ease-in;
+  transition: opacity 600ms ease-in;
 }
 
 .fade-exit {
@@ -18,7 +18,7 @@
   opacity: 0;
   position: absolute; /* Keep exiting content in place */
   width: 100%;
-  transition: opacity 1200ms ease-out;
+  transition: opacity 600ms ease-out;
 }
 
 .page-transition {
@@ -29,15 +29,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
-}
-.content-container {
-  position: absolute;
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
+  overflow: hidden;
 }

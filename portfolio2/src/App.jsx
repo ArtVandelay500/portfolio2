@@ -23,37 +23,23 @@ function App() {
     const modeToRemove = isDarkMode ? "dark" : "light";
 
     const backgroundElement = document.querySelector(".background");
-    const toggleTrackElement = document.querySelector(".toggle-track");
-    const buttonElement = document.querySelector(".back-button");
 
     if (backgroundElement) {
       backgroundElement.classList.remove(modeToRemove);
       backgroundElement.classList.add(modeToAdd);
     }
 
-    if (toggleTrackElement) {
-      toggleTrackElement.classList.remove(modeToRemove);
-      toggleTrackElement.classList.add(modeToAdd);
-    }
-    if (buttonElement) {
-      buttonElement.classList.remove(modeToRemove);
-      buttonElement.classList.add(modeToAdd);
-    }
+    // Save the intended mode for when the button is rendered
+    localStorage.setItem("buttonTheme", modeToAdd); // Store the intended state
   };
 
   return (
     <div className={`app-container ${isDarkMode ? "dark" : "light"}`}>
+      <div
+        className="theme-toggle-overlay"
+        onClick={toggleTheme} // Toggle theme when clicked
+      ></div>
       <WaveEffect isDarkMode={isDarkMode} />
-      <button
-        className="theme-toggle"
-        onClick={toggleTheme}
-        data-light-mode={!isDarkMode}
-        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      >
-        <div className="toggle-track">
-          <div className="toggle-thumb" />
-        </div>
-      </button>
       <div className="content-wrapper">
         <LeftPanel
           currentView={currentView}
@@ -62,6 +48,7 @@ function App() {
           setSelectedProject={setSelectedProject}
           activeSection={activeSection} // Add this
           setActiveSection={setActiveSection} // Add this
+          isDarkMode={isDarkMode}
         />
         <RightPanel
           currentView={currentView}

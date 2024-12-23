@@ -2,10 +2,18 @@
 import React, { useRef, useEffect } from "react";
 
 const ProjectDetail = ({ project, activeSection }) => {
+  console.log("ProjectDetail render", { project, activeSection });
   const sectionRefs = useRef({});
+  const componentRef = useRef(null);
 
   useEffect(() => {
     if (activeSection && sectionRefs.current[activeSection]) {
+      // Store the current scroll position
+      const currentScroll = componentRef.current.scrollTop;
+
+      // Add a class to prevent scroll reset during unmount
+      componentRef.current.classList.add("maintain-scroll");
+
       sectionRefs.current[activeSection].scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -138,7 +146,7 @@ const ProjectDetail = ({ project, activeSection }) => {
   if (!project) return null;
 
   return (
-    <div className="project-detail">
+    <div className="project-detail" ref={componentRef}>
       <h1>{sampleProject.title}</h1>
       <p className="overview">{sampleProject.overview}</p>
 

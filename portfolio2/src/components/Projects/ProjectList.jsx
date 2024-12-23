@@ -28,7 +28,6 @@ const ProjectList = ({ setSelectedProject }) => {
           key={project.id}
           className="project-card"
           onClick={() => {
-            console.log("Project selected:", project); // Debug log
             setSelectedProject(project);
           }}
         >

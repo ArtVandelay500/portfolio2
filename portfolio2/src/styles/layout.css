@@ -1,10 +1,11 @@
 :root {
   /* Default margin values */
-  --margin-large: 30px;
-  --margin-medium: 20px;
-  --margin-small: 10px;
+  --margin-large: clamp(10px, 4vw, 30px);
+  --margin-medium: clamp(8px, 3vw, 20px);
+  --margin-small: clamp(5px, 2vw, 10px);
   --dark-border: #000000;
   --light-border: #ececec;
+  --content-gap: clamp(0px, 3vw, 40px);
 }
 @font-face {
   font-family: "Kuta";
@@ -21,23 +22,24 @@
 .app-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   color: white;
   overflow: hidden;
   font-family: "Chosunilbo_myungjo", "Kuta";
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   letter-spacing: normal;
+  z-index: 1;
 }
 
 /* This is where we create the margin effect */
 .content-wrapper {
   position: relative;
-  width: calc(100% - 80px); /* 40px margin on each side */
-  height: calc(100vh - 80px); /* 40px margin top and bottom */
-  margin: 40px auto; /* Centers the content and creates top/bottom margin */
+  width: calc(100% - (var(--margin-large) * 2));
+  height: calc(100vh - (var(--margin-large) * 2));
+  margin: var(--margin-large) auto;
   display: flex;
-  gap: 40px;
-  z-index: 1; /* Keeps content above background */
+  gap: var(--content-gap);
+  z-index: 2;
 }
 
 /* Ensure Three.js canvas stays full screen */
@@ -45,12 +47,12 @@
   overflow: hidden;
   position: fixed;
   z-index: 0;
+  box-shadow: 0 0 0 0.3px var(--light-border);
+  transition: all 0.5s ease-in-out;
   top: var(--margin-large);
   left: var(--margin-large);
   bottom: var(--margin-large);
   right: var(--margin-large);
-  box-shadow: 0 0 0 0.3px white;
-  transition: all 0.5s ease-in-out;
 }
 .background.dark {
   box-shadow: 0 0 0 0.3px var(--light-border);
@@ -58,4 +60,87 @@
 
 .background.light {
   box-shadow: 0 0 0 0.3px var(--dark-border);
+}
+
+/* Medium screens (e.g., tablets) */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+}
+
+/* Small screens (e.g., iPhones) */
+@media (max-width: 768px) {
+  .content-wrapper {
+    gap: var(--margin-small);
+  }
+
+  .page-transition {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Extra small screens (e.g., small phones) */
+/* Mobile portrait */
+@media (max-width: 480px) {
+  :root {
+    --content-gap: 0px;
+  }
+  .left-panel .page-transition {
+    width: 100%;
+    min-height: 20%;
+    margin: 10px 0 0 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 0.8em;
+    z-index: 4;
+  }
+  .left-panel .page-transition h2 {
+    position: fixed;
+    visibility: hidden;
+  }
+
+  .left-panel .page-transition .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px;
+    margin-top: 10px;
+  }
+  .left-panel .page-transition > .nav-list {
+    font-size: 1.2em;
+  }
+  .left-panel .page-transition > h1 {
+    font-size: 3em;
+  }
+  .left-panel .page-transition .project-index {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+  }
+  .left-panel .page-transition .project-index .section-list {
+    gap: 0;
+  }
+  .left-panel .page-transition .project-index button {
+    margin-bottom: 0;
+  }
+  .right-panel {
+    min-height: 70%;
+  }
+  .left-panel {
+    position: fixed;
+    width: 100vw;
+    z-index: 3;
+    backdrop-filter: blur(10px); /* Apply blur effect to the background */
+  }
+  .page-transition > {
+    padding: var(--margin-small);
+    -webkit-overflow-scrolling: touch;
+  }
 }
