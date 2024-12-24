@@ -18,11 +18,6 @@ const RightPanel = ({
           key={selectedProject ? `project-${selectedProject.id}` : currentView}
           timeout={600}
           classNames="fade"
-          onExited2={() => console.log("Component exited")}
-          onEntered2={() => console.log("Component entered")}
-          onExit={(node) => {
-            console.log("Starting exit", { selectedProject, currentView });
-          }}
         >
           <div className="page-transition">
             {selectedProject ? (

@@ -4,7 +4,7 @@ const NavList = ({ currentView, setCurrentView }) => {
 
   return (
     <>
-      <h1>hey</h1>
+      <h1>홍현욱</h1>
       <ul className="nav-list">
         {navItems.map((item) => (
           <li
